@@ -49,7 +49,7 @@ export async function update(id, turma) {
                     bt_ativo = ?, dt_inclusao = ? WHERE id_turma = ?`;
 
     let [info] = await connection.query(comando, 
-        [turma.nm_turma, turma.ds_curso, turma.nr_ano_letivo, turma.qtd_capacidade, turma.bt_ativo, turma.dt_inculsao, id]);
+        [turma.nm_turma, turma.ds_curso, turma.nr_ano_letivo, turma.qtd_capacidade, turma.bt_ativo, turma.dt_inclusao, id]);
 
     return info.affectedRows;   
 }

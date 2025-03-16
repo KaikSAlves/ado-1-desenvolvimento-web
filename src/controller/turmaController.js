@@ -17,4 +17,13 @@ endpoints.get('/turma', async (req, resp) => {
     resp.send(turmas);
 });
 
+endpoints.put('/turma/:id', async (req, resp) =>{
+    let id = req.params.id;
+    let turma = req.body;
+
+    let affectedRows = await crud.update(id, turma);
+
+    resp.send({affectedRows});
+});
+
 export default endpoints;
