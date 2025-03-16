@@ -17,6 +17,13 @@ endpoints.get('/turma', async (req, resp) => {
     resp.send(turmas);
 });
 
+endpoints.get('/turma/busca/ano', async (req, resp) => {
+    let ano = req.query.ano;
+    let turmas = await crud.findByYear(ano);
+
+    resp.send(turmas);
+});
+
 endpoints.put('/turma/:id', async (req, resp) =>{
     let id = req.params.id;
     let turma = req.body;

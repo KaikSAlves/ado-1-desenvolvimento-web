@@ -29,7 +29,8 @@ export async function findAll(){
 }
 
 export async function findById(id){
-    const comando = `SELECT nm_turma as nm_turma,
+    const comando = `SELECT id_turma as id_turma,
+                            nm_turma as nm_turma,
                             ds_curso as ds_curso,
                             nr_ano_letivo as nr_ano_letivo,
                             qtd_capacidade as qtd_capacidade,
@@ -38,6 +39,20 @@ export async function findById(id){
                             FROM tb_turma WHERE id_turma = ?`;
 
     let resp = await connection.query(comando, [id]);
+    return resp[0];
+}
+
+export async function findByYear(year){
+    const comando = `SELECT id_turma as id_turma,
+                            nm_turma as nm_turma,
+                            ds_curso as ds_curso,
+                            nr_ano_letivo as nr_ano_letivo,
+                            qtd_capacidade as qtd_capacidade,
+                            bt_ativo as bt_ativo,
+                            dt_inclusao as dt_inclusao
+                            FROM tb_turma WHERE dt_inclusao >= ?`;
+
+    let resp = await connection.query(comando, [new Date(year)]);
     return resp[0];
 }
 
