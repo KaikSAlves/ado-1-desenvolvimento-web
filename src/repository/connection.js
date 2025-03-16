@@ -7,4 +7,5 @@ const connection = await mysql.createConnection({
     database: process.env.MYSQL_DATABASE
 })
 
-console.log("Conexao com banco realizada")
+console.log("Conexao com banco realizada");
+export default connection;
