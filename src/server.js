@@ -4,7 +4,8 @@ import cors from 'cors'
 import adicionarRotas from './routes.js';
 
 const servidor = express();
-servidor.get(express.json());
+servidor.use(express.json());
+
 servidor.use(cors());
 
 adicionarRotas(servidor);
