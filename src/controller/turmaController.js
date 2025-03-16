@@ -11,4 +11,10 @@ endpoints.post('/turma', async (req, resp) => {
     resp.send({id});
 });
 
+endpoints.get('/turma', async (req, resp) => {
+    let turmas = await crud.findAll();
+
+    resp.send(turmas);
+});
+
 export default endpoints;

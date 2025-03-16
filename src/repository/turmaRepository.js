@@ -8,7 +8,7 @@ export async function insert(turma){
      bt_ativo, dt_inclusao) VALUES (?, ?, ?, ?, ?, ?)`;
 
     let [info] = await connection.query(comando,
-        [turma.nm_turma, turma.ds_curso, turma.nr_ano_letivo, turma.qtd_capacidade, turma.bt_ativo, turma.dt_inculsao]);
+        [turma.nm_turma, turma.ds_curso, turma.nr_ano_letivo, turma.qtd_capacidade, turma.bt_ativo, turma.dt_inclusao]);
 
     return info.insertId;
 }
