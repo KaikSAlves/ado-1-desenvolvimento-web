@@ -50,9 +50,23 @@ export async function findByYear(year){
                             qtd_capacidade as qtd_capacidade,
                             bt_ativo as bt_ativo,
                             dt_inclusao as dt_inclusao
-                            FROM tb_turma WHERE dt_inclusao >= ?`;
+                            FROM tb_turma WHERE YEAR(dt_inclusao) = ?`;
 
-    let resp = await connection.query(comando, [new Date(year)]);
+    let resp = await connection.query(comando, [year]);
+    return resp[0];
+}
+
+export async function findByCourseAndYear(year, course){
+    const comando = `SELECT id_turma as id_turma,
+                            nm_turma as nm_turma,
+                            ds_curso as ds_curso,
+                            nr_ano_letivo as nr_ano_letivo,
+                            qtd_capacidade as qtd_capacidade,
+                            bt_ativo as bt_ativo,
+                            dt_inclusao as dt_inclusao
+                            FROM tb_turma WHERE ds_curso = ? AND YEAR(dt_inclusao) = ?`;
+
+    let resp = await connection.query(comando, [course, year]);
     return resp[0];
 }
 
