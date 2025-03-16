@@ -26,4 +26,11 @@ endpoints.put('/turma/:id', async (req, resp) =>{
     resp.send({affectedRows});
 });
 
+endpoints.delete('/turma/:id', async (req, resp) => {
+    let id = req.params.id;
+    
+    let affectedRows = await crud.deleteById(id);
+    resp.send({affectedRows});
+});
+
 export default endpoints;

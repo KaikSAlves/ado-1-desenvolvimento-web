@@ -16,7 +16,8 @@ export async function insert(turma){
 //read
 
 export async function findAll(){
-    const comando = `SELECT nm_turma as nm_turma,
+    const comando = `SELECT id_turma as id_turma,
+                            nm_turma as nm_turma,
                             ds_curso as ds_curso,
                             nr_ano_letivo as nr_ano_letivo,
                             qtd_capacidade as qtd_capacidade,
